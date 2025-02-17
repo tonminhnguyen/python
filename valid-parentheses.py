@@ -1,0 +1,21 @@
+def isValid(s):
+    stack = []
+    closeToOpen = {")": "(", "]": "[", "}": "{"}
+
+    for c in s:
+        if c in closeToOpen:
+            if stack and stack[-1] == closeToOpen[c]:
+                stack.pop()
+            else:
+                return False
+        else:
+            stack.append(c)
+
+    return not stack
+
+def main():
+    test_string = "{[()]}"
+    result = isValid(test_string)
+    print(f"{result}")
+
+main()
